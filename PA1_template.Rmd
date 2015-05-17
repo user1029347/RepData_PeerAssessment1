@@ -34,8 +34,15 @@ which.max(intMean)
 ```{r}
 sum(is.na(data))
 
+# Replacement of NA with 0 for total steps in interval.
+data[is.na(data)] <- 0
 
-
+totSteps <- tapply(data$steps, data$date, sum)
+hist(totSteps, breaks = 20, xlab = "Total number of steps per day")
+mean(totSteps, na.rm = TRUE)
+median(totSteps, na.rm = TRUE)
+```
+By replacing the NA values with 0, both the mean and median number of steps taken per day decreased. 
 
 ```
 ## Are there differences in activity patterns between weekdays and weekends?
