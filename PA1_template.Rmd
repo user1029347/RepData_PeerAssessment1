@@ -44,7 +44,6 @@ median(totSteps, na.rm = TRUE)
 ```
 By replacing the NA values with 0, both the mean and median number of steps taken per day decreased. 
 
-```
 ## Are there differences in activity patterns between weekdays and weekends?
 ```{r}
 
