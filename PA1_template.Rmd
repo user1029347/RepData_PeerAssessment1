@@ -7,19 +7,38 @@ output:
 
 
 ## Loading and preprocessing the data
+```{r}
+unzip("activity.zip")
+data <- read.csv("activity.csv")
+data$interval <- as.factor(data$interval)
 
-
-
+```
 ## What is mean total number of steps taken per day?
-
-
-
+```{r}
+dataCom <- data[complete.cases(data),]
+sumSteps <- tapply(dataCom$steps, dataCom$date, sum)
+sumSteps
+hist(sumSteps, breaks = 20, xlab = "Total number of steps per day")
+mean(sumSteps, na.rm = TRUE)
+median(sumSteps, na.rm = TRUE)
+```
 ## What is the average daily activity pattern?
-
-
+```{r}
+intMean <- tapply(data$steps, data$interval, mean, na.rm = TRUE)
+intMean
+plot(levels(data$interval), intMean, type = "l", xlab = "5 minute interval", ylab = "Average number of steps")
+which.max(intMean)
+```
 
 ## Imputing missing values
+```{r}
+sum(is.na(data))
 
 
 
+
+```
 ## Are there differences in activity patterns between weekdays and weekends?
+```{r}
+
+```
